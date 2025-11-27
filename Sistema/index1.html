@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>SIGMA - Painel Coordenação/Professor</title>
+    <style>
+        * { box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+        body {
+            margin: 0; padding: 0;
+            background: #f3f4f6;
+            min-height: 100vh;
+        }
+        .topbar {
+            background: #2563eb;
+            color: #fff;
+            padding: 10px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .topbar h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .topbar span {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        .user-info {
+            font-size: 12px;
+        }
+        .layout {
+            display: flex;
+            padding: 16px;
+            gap: 16px;
+        }
+        .sidebar {
+            width: 220px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            padding: 16px;
+        }
+        .sidebar h3 {
+            margin-top: 0;
+            font-size: 14px;
+            color: #111827;
+        }
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 13px;
+        }
+        .menu li {
+            margin-bottom: 8px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #374151;
+        }
+        .menu a:hover {
+            color: #2563eb;
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 16px 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .card h2 {
+            margin: 0 0 8px 0;
+            font-size: 16px;
+            color: #111827;
+        }
+        .card p {
+            margin: 0;
+            font-size: 13px;
+            color: #6b7280;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+        }
+        .card-small {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 10px 12px;
+            border: 1px solid #e5e7eb;
+        }
+        .card-small h4 {
+            margin: 0 0 4px 0;
+            font-size: 13px;
+            color: #111827;
+        }
+        .card-small span {
+            font-size: 12px;
+            color: #6b7280;
+        }
+        .metrics {
+            display: flex;
+            gap: 12px;
+        }
+        .metric-box {
+            flex: 1;
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            font-size: 13px;
+        }
+        .metric-box strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 4px;
+            color: #111827;
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div>
+            <h1>SIGMA</h1>
+            <span>Sistema de Gestão de Monitoria Acadêmica</span>
+        </div>
+        <div class="user-info">
+        <span id="user-role">Coordenação/Professor</span><br>
+        <strong id="user-email">prof.maria.silva@instituicao.edu.br</strong>
+    </div>
+    </div>
+
+    <div class="layout">
+        <aside class="sidebar">
+            <h3>Menu</h3>
+            <ul class="menu">
+                <li><a href="index4.html">Editais de Monitoria</a></li>
+                <li><a href="#">Monitorias Ativas</a></li>
+                <li><a href="#">Agenda de Plantões</a></li>
+                <li><a href="#">Materiais por Disciplina</a></li>
+                <li><a href="#">Relatórios e Métricas</a></li>
+                <li><a href="#">Certificados de Monitores</a></li>
+                <li><a href="#">Configurações</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <section class="card">
+                <h2>Resumo da Coordenação</h2>
+                <p>Visão geral das monitorias do curso: editais abertos, monitorias ativas e atendimentos registrados.</p>
+                <div class="metrics" style="margin-top: 10px;">
+                    <div class="metric-box">
+                        <span>Editais abertos</span>
+                        <strong>3</strong>
+                    </div>
+                    <div class="metric-box">
+                        <span>Monitorias ativas</span>
+                        <strong>12</strong>
+                    </div>
+                    <div class="metric-box">
+                        <span>Atendimentos no mês</span>
+                        <strong>245</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Editais recentes</h2>
+                <div class="card-grid">
+                    <div class="card-small">
+                        <h4>Monitoria - Cálculo I</h4>
+                        <span>Inscrições até 30/04 • 2 vagas</span>
+                    </div>
+                    <div class="card-small">
+                        <h4>Monitoria - Programação</h4>
+                        <span>Inscrições até 25/04 • 1 vaga (bolsa)</span>
+                    </div>
+                    <div class="card-small">
+                        <h4>Monitoria - Estatística</h4>
+                        <span>Inscrições encerradas • Em análise</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Monitorias em andamento</h2>
+                <p>Lista resumida de monitorias cadastradas para o semestre atual.</p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+<script>
+    // Ler dados salvos no login
+    const emailSalvo  = localStorage.getItem('sigmaEmail');
+    const perfilSalvo = localStorage.getItem('sigmaPerfil');
+
+    const emailEl = document.getElementById('user-email');
+    const roleEl  = document.getElementById('user-role');
+
+    if (emailSalvo && emailEl) {
+        emailEl.textContent = emailSalvo;
+    }
+
+    // Se quiser também ajustar o texto do papel
+    const roles = {
+        coordenacao: 'Coordenação/Professor',
+        admin: 'Administração',
+        monitor: 'Monitor',
+        aluno: 'Aluno'
+    };
+
+    if (perfilSalvo && roleEl && roles[perfilSalvo]) {
+        roleEl.textContent = roles[perfilSalvo];
+    }
+</script>
