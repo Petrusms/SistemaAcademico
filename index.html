@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>SIGMA - Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .login-container {
+            background: #ffffff;
+            width: 380px;
+            padding: 32px 28px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+            color: #1f2933;
+        }
+
+        .logo span {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #636b74;
+        }
+
+        .login-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #1f2933;
+        }
+
+        .login-subtitle {
+            font-size: 13px;
+            color: #7b8794;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            color: #3e4c59;
+            margin-bottom: 4px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 9px 10px;
+            border-radius: 6px;
+            border: 1px solid #cbd2d9;
+            font-size: 13px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 1px rgba(37,99,235,0.2);
+        }
+
+        .roles-hint {
+            font-size: 11px;
+            color: #9aa5b1;
+            margin-top: 2px;
+        }
+
+        .actions {
+            margin-top: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .remember {
+            font-size: 12px;
+            color: #52606d;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .remember input {
+            width: auto;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            border: none;
+            color: #ffffff;
+            padding: 9px 18px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .footer-links {
+            margin-top: 18px;
+            font-size: 11px;
+            display: flex;
+            justify-content: space-between;
+            color: #6b7280;
+        }
+
+        .footer-links a {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 11px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .system-footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 10px;
+            color: #9aa5b1;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <h1>SIGMA</h1>
+            <span>Sistema de Gestão de Monitoria Acadêmica</span>
+        </div>
+
+        <div class="login-header">
+            <div class="login-title">Acesso ao sistema</div>
+            <div class="login-subtitle">
+                Informe suas credenciais institucionais para acessar o painel de Coordenação, Monitor ou Aluno.
+            </div>
+        </div>
+
+        <!-- IMPORTANTE: adicionar id="login-form" -->
+        <form id="login-form">
+            <div class="form-group">
+                <label for="perfil">Perfil</label>
+                <select id="perfil" name="perfil" required>
+                    <option value="">Selecione...</option>
+                    <option value="coordenacao">Coordenação / Professor</option>
+                    <option value="monitor">Monitor</option>
+                    <option value="aluno">Aluno</option>
+                    <option value="admin">Administração</option>
+                </select>
+                <div class="roles-hint">
+                    O mesmo sistema atende todos os perfis. As permissões variam conforme o tipo de usuário.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail institucional</label>
+                <input type="email" id="email" name="email"
+                       placeholder="nome.sobrenome@instituicao.edu.br" required>
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha"
+                       placeholder="Digite sua senha" required>
+            </div>
+
+            <div class="actions">
+                <label class="remember">
+                    <input type="checkbox" name="lembrar">
+                    Manter conectado
+                </label>
+                <button type="submit" class="btn-primary">Entrar</button>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">Esqueci minha senha</a>
+                <a href="#">Primeiro acesso</a>
+            </div>
+        </form>
+
+        <div class="system-footer">
+            © 2025 • SIGMA – Monitoria Acadêmica • Uso restrito à comunidade acadêmica
+        </div>
+    </div>
+
+    <!-- JS básico para redirecionar por perfil -->
+    <script>
+       const form = document.getElementById('login-form');
+
+form.addEventListener('submit', function (event) {
+    event.preventDefault(); // não envia para servidor
+
+    const perfil = document.getElementById('perfil').value;
+    const email  = document.getElementById('email').value.trim();
+    const senha  = document.getElementById('senha').value.trim();
+
+    if (!perfil) {
+        alert('Selecione um perfil para continuar.');
+        return;
+    }
+
+    if (!email || !senha) {
+        alert('Preencha e-mail e senha.');
+        return;
+    }
+
+    // Guarda dados básicos do usuário para usar nas próximas telas
+    localStorage.setItem('sigmaEmail', email);
+    localStorage.setItem('sigmaPerfil', perfil);
+
+    // Redireciona para o painel de acordo com o perfil
+    switch (perfil) {
+        case 'coordenacao':
+            window.location.href = 'index1.html'; // Painel coordenação/prof
+            break;
+        case 'monitor':
+            window.location.href = 'index2.html'; // Painel monitor
+            break;
+        case 'aluno':
+            window.location.href = 'index3.html'; // Painel aluno
+            break;
+        case 'admin':
+            window.location.href = 'index1.html';
+            break;
+        default:
+            alert('Perfil inválido.');
+    }
+});
+
+    </script>
+</body>
+</html>
